@@ -1,0 +1,23 @@
+<h1>{{username}}</h1>
+
+<p [style.color]="isWarning ? 'orange' : 'green'">
+    This is a dynamic color paragraph.
+</p>
+
+<div>
+    <button [disabled]="isDisabled" [title]="btnTitle">
+        Click me
+    </button>
+</div><br>
+
+<button [disabled]="isWarning">Submit</button>
+<br><br>
+<button (click)="eventBinding()">submit</button>
+
+<input [(ngModel)]="Twobinding" type="text" placeholder="Enter text">
+<p>{{Twobinding}}</p>
+
+
+<app-tree-view [nodes]="treeData"></app-tree-view>
+<!-- <app-bar-chart></app-bar-chart> -->
+<!-- <app-pie-chart></app-pie-chart> -->

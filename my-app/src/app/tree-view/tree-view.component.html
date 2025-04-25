@@ -1,0 +1,9 @@
+<!-- tree-view.component.html -->
+<ul>
+    <ng-container *ngFor="let node of nodes">
+        <li>
+            {{ node.name }}
+            <app-tree-view *ngIf="node.children" [nodes]="node.children"></app-tree-view>
+        </li>
+    </ng-container>
+</ul>

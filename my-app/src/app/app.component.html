@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgb(96, 89, 148);
+  border-bottom: 2px solid rgb(211, 197, 197);
+  padding: 8px 20px;
+">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    <a class="navbar-brand text-white fw-bold" href="#">Demo Project</a>
+
+    <div class="d-flex gap-3">
+      <a class="btn btn-sm text-white nav-link px-3 py-1" routerLink="/demo" routerLinkActive="active"
+        style="transition: 0.3s;">
+        Employee
+      </a>
+      <a class="btn btn-sm text-white nav-link px-3 py-1" routerLink="/hooks" routerLinkActive="active"
+        style="transition: 0.3s;">
+        Hooks
+      </a>
+      <a class="btn btn-sm text-white nav-link px-3 py-1" routerLink="/data" routerLinkActive="active"
+        style="transition: 0.3s;">
+        Databinding
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+<div style="margin-top: 70px; padding: 10px;">
+  <router-outlet></router-outlet>
+</div>
