@@ -1,38 +1,45 @@
-<nav class="navbar navbar-expand-lg" style="
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 60px;
-  width: 100%;
-  z-index: 1000;
-  background-color: rgb(96, 89, 148);
-  border-bottom: 2px solid rgb(211, 197, 197);
-  padding: 8px 20px;
-">
+<nav *ngIf="shouldShowNavbar()" class="navbar navbar-expand-lg"
+  style="position: fixed; top: 0; left: 0; height: 60px; width: 100%; z-index: 1000; background-color: rgb(96, 89, 148); border-bottom: 2px solid rgb(211, 197, 197); padding: 8px 20px;">
   <div class="container-fluid d-flex justify-content-between align-items-center">
     <a class="navbar-brand text-white fw-bold" href="#">Demo Project</a>
 
-    <div class="d-flex gap-3">
+    <div class="d-flex gap-3 mx-auto align-items-center">
+
       <a class="btn btn-sm text-white nav-link px-3 py-1" routerLink="/demo" routerLinkActive="active"
         style="transition: 0.3s;">
         Employee
       </a>
+
       <a class="btn btn-sm text-white nav-link px-3 py-1" routerLink="/hooks" routerLinkActive="active"
         style="transition: 0.3s;">
         Hooks
       </a>
-      <a class="btn btn-sm text-white nav-link px-3 py-1" routerLink="/data" routerLinkActive="active"
-        style="transition: 0.3s;">
-        Databinding
-      </a>
+
+      <div class="dropdown">
+        <button class="btn btn-sm text-white dropdown-toggle" type="button" id="dropdownMenuButton"
+          data-bs-toggle="dropdown" aria-expanded="false" style="transition: 0.3s;">
+          Charts & Views
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><a class="dropdown-item" routerLink="/piechart" routerLinkActive="active">Pie Chart</a></li>
+          <li><a class="dropdown-item" routerLink="/data" routerLinkActive="active">Tree View</a></li>
+          <li><a class="dropdown-item" routerLink="/barchart" routerLinkActive="active">Bar Chart</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="d-flex gap-3">
+      <i *ngIf="!isLoggedIn" class="bi bi-box-arrow-right" routerLink="/login" routerLinkActive="active"
+        style="transition: 0.3s;color: aliceblue;font-size: 30px;">
+      </i>
+      <i *ngIf="isLoggedIn" class="bi bi-box-arrow-left" (click)="logout()"
+        style="transition: 0.3s;color: aliceblue;font-size: 30px;">
+      </i>
     </div>
   </div>
 </nav>
 
-
-
-
-
+<!-- Main Content below Navbar -->
 <div style="margin-top: 70px; padding: 10px;">
   <router-outlet></router-outlet>
 </div>

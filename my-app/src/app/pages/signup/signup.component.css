@@ -1,0 +1,58 @@
+/* signup.component.css */
+
+/* Center the form */
+form {
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Style inputs */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #6c63ff;
+    outline: none;
+}
+
+/* Style button */
+button {
+    width: 100%;
+    background-color: #6c63ff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #5a52d4;
+}
+
+/* Error message */
+.text-danger {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+}

@@ -1,4 +1,5 @@
-<!-- tree-view.component.html -->
+<h1>{{childData}}</h1>
+<button (click)="sendData()">Send Data to Parent</button>
 <ul>
     <ng-container *ngFor="let node of nodes">
         <li>

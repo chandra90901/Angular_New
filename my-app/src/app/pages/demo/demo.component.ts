@@ -1,15 +1,15 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, ReactiveFormsModule, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { DemoService } from '../Services/demo.service';
+import { DemoService } from '../../Services/demo.service';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
-import { HoverHighlightDirective } from '../hover-highlight.directive';
+import { HoverHighlightDirective } from '../../hover-highlight.directive';
+import { ActivatedRoute } from '@angular/router';
 
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-demo',
-  // standalone: true,
   imports: [ReactiveFormsModule, CommonModule, HoverHighlightDirective],
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.css']
@@ -27,21 +27,20 @@ export class DemoComponent implements OnInit, OnDestroy, AfterViewInit {
   genderLabel = "Enter your Gender";
   modalInstance: any;
 
-  constructor(private fb: FormBuilder, private demoService: DemoService) {
+  constructor(private fb: FormBuilder, private demoService: DemoService, private route: ActivatedRoute) {
     this.myForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       age: ['', [Validators.required]],
-      addressLabel: ['', Validators.required],
-      genderLabel: ['', [Validators.required, Validators.email]],
-      phoneLabel: ['', [Validators.required,]],
+      address: ['', [Validators.required]],
+      gender: ['', [Validators.required]],
+      phone: ['', [Validators.required,]]
     });
   }
 
   @ViewChild('demoModal') demoModalRef!: ElementRef;
 
   ngAfterViewInit(): void {
-    // Initialize the modal instance after the view is initialized
     this.modalInstance = new bootstrap.Modal(this.demoModalRef.nativeElement);
   }
 

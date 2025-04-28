@@ -17,7 +17,5 @@
 <input [(ngModel)]="Twobinding" type="text" placeholder="Enter text">
 <p>{{Twobinding}}</p>
 
-
-<app-tree-view [nodes]="treeData"></app-tree-view>
-<!-- <app-bar-chart></app-bar-chart> -->
-<!-- <app-pie-chart></app-pie-chart> -->
+<p>{{ receivedData }}</p>
+<app-tree-view (dataSent)="receiveData($event)" [childData]="parentData" [nodes]="treeData"></app-tree-view>

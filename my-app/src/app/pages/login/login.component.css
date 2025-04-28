@@ -1,0 +1,68 @@
+form {
+    max-width: 400px;
+    margin: 100px auto 0;
+    /* center and push down a bit */
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #7b68ee;
+    box-shadow: 0 0 5px rgba(123, 104, 238, 0.5);
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #7b68ee;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #5a4edb;
+}
+
+.text-danger {
+    color: red;
+    font-size: 0.9rem;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
+a.text-primary {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a.text-primary:hover {
+    text-decoration: underline;
+}

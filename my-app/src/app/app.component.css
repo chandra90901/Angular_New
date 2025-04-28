@@ -8,3 +8,21 @@ a.nav-link.active {
     border-radius: 5px;
     font-weight: bold;
 }
+
+/* Highlight active dropdown item */
+.dropdown-item.active {
+    background-color: #605994;
+    /* same as navbar color */
+    color: rgb(225, 138, 138);
+    font-weight: bold;
+}
+
+#dropdownMenuButton {
+    font-weight: 600;
+}
+
+/* Smooth hover effect on dropdown items */
+.dropdown-item:hover {
+    background-color: #7871b8;
+    color: white;
+}
