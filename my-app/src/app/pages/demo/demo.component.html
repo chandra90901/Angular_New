@@ -1,9 +1,9 @@
-<div class="modal fade" id="demoModal" tabindex="-1" aria-hidden="true" #demoModal>
+<div class="modal fade" id="demoModal" tabindex="-1" #demoModal>
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">{{ selectedId ? 'Edit Employee' : 'Add Employee' }}</h5>
-                <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+                <button type="button" class="btn-close" (click)="closeModal()"></button>
             </div>
             <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
                 <div class="modal-body">

@@ -1,22 +1,39 @@
-ul {
+.tree-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.tree-container ul {
     list-style-type: none;
     padding-left: 20px;
-    border-left: 1px dashed #aaa;
-    margin: 5px 0;
 }
 
-li {
-    margin: 5px 0;
-    padding-left: 10px;
+.tree-container li {
+    margin: 10px 0;
     position: relative;
+    padding-left: 20px;
+    cursor: pointer;
 }
 
-li::before {
-    content: '';
-    position: absolute;
-    top: 10px;
-    left: 0;
-    width: 10px;
-    height: 1px;
-    background: #aaa;
+.expandable {
+    font-weight: bold;
+    color: #00796b;
+}
+
+.expandable::before {
+    content: '▶';
+    /* Initial collapsed icon */
+    display: inline-block;
+    width: 12px;
+    margin-right: 10px;
+}
+
+.expandable.expanded::before {
+    content: '▼';
+    /* Expanded icon */
+}
+
+.tree-container li:hover {
+    background-color: #f0f0f0;
+    border-radius: 4px;
 }

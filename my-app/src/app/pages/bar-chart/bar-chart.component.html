@@ -1,3 +1,6 @@
+<h5 class="text-center" [style.color]="isWarning ? 'orange' : 'green'">
+    Bar Chart
+</h5>
 <canvas baseChart [data]="barChartData" [options]="barChartOptions" [plugins]="barChartPlugins"
     [legend]="barChartLegend" [type]="'bar'">
 </canvas>

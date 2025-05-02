@@ -14,16 +14,17 @@ import { LoginService } from '../../Services/login.service';
 export class LoginComponent {
   loginForm: FormGroup;
   errorMessage = '';
-
+  showPassword = false;
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
     private router: Router
   ) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      identifier: ['', Validators.required],
       password: ['', Validators.required]
     });
+
   }
 
   onSubmit() {
@@ -34,7 +35,7 @@ export class LoginComponent {
           alert("login Success ");
           localStorage.setItem('isLoggedIn', 'true');
           localStorage.setItem('token', x.token);
-          this.router.navigate(['/demo']);
+          this.router.navigate(['/dashboard']);
         },
         error: (error) => {
           if (error.status === 401) {
@@ -42,6 +43,7 @@ export class LoginComponent {
           } else {
             this.errorMessage = 'An error occurred while logging in. Please try again later.';
           }
+          throw error;
         }
       });
     } else {

@@ -4,6 +4,9 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { routes } from './app.routes';
+import { ErrorHandler } from '@angular/core';
+import { GlobalErrorHandler } from './Services/global-error-handler.service';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,6 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch()),
-    provideCharts(withDefaultRegisterables())
+    provideCharts(withDefaultRegisterables()),
+    { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ]
 };

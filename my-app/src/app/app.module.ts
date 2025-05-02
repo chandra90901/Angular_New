@@ -11,19 +11,23 @@ import { DemoComponent } from './pages/demo/demo.component';
 import { TreeViewComponent } from './pages/tree-view/tree-view.component';
 import { HooksComponent } from './pages/hooks/hooks.component';
 import { FormsModule } from '@angular/forms';
+import { MainComponent } from './pages/main/main.component';
+import { ParentMainComponent } from './pages/parent-main/parent-main.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
         AppComponent,
         HoverHighlightDirective,
-        BarChartComponent,  // Add BarChartComponent to declarations
-        PieChartComponent,  // Add PieChartComponent if using it
+        BarChartComponent,
+        PieChartComponent,
         DataBindingComponent,
         DemoComponent,
-        TreeViewComponent, HooksComponent
+        TreeViewComponent, HooksComponent,
+        MainComponent, ParentMainComponent
     ],
     imports: [
-        BrowserModule, FormsModule
+        BrowserModule, FormsModule, RouterModule
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

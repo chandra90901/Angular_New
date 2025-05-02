@@ -1,23 +1,22 @@
-// tree-data.ts
 export const TREE_DATA = [
     {
-        name: 'Root 1',
+        name: 'Root Node 1',
         children: [
-            { name: 'Child 1.1' },
             {
-                name: 'Child 1.2',
+                name: 'Child Node 1-1',
                 children: [
-                    { name: 'Grandchild 1.2.1' },
-                    { name: 'Grandchild 1.2.2' },
+                    { name: 'Grandchild Node 1-1-1' },
+                    { name: 'Grandchild Node 1-1-2' }
                 ]
-            }
+            },
+            { name: 'Child Node 1-2' }
         ]
     },
     {
-        name: 'Root 2',
+        name: 'Root Node 2',
         children: [
-            { name: 'Child 2.1' },
-            { name: 'Child 2.2' }
+            { name: 'Child Node 2-1' },
+            { name: 'Child Node 2-2' }
         ]
     }
 ];

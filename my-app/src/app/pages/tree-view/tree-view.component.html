@@ -1,10 +1,13 @@
-<h1>{{childData}}</h1>
-<button (click)="sendData()">Send Data to Parent</button>
-<ul>
-    <ng-container *ngFor="let node of nodes">
-        <li>
-            {{ node.name }}
-            <app-tree-view *ngIf="node.children" [nodes]="node.children"></app-tree-view>
-        </li>
-    </ng-container>
-</ul>
+<div class="tree-container text-center">
+    <ul>
+        <ng-container *ngFor="let node of nodes">
+            <li>
+                <span class="expandable" (click)="toggleNode(node)" [class.expanded]="node.expanded">
+                    {{ node.name }}
+                </span>
+
+                <app-tree-view *ngIf="node.children && node.expanded" [nodes]="node.children"></app-tree-view>
+            </li>
+        </ng-container>
+    </ul>
+</div>

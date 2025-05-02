@@ -19,7 +19,7 @@ label {
     font-weight: 600;
 }
 
-input[type="email"],
+input[type="identifier"],
 input[type="password"] {
     width: 100%;
     padding: 8px 12px;

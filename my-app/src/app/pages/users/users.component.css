@@ -1,0 +1,87 @@
+/* Table styling */
+table {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+table thead {
+    background-color: #784e4e;
+}
+
+table th,
+table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+table th button.btn {
+    /* background-color: #346a9f; */
+    color: #f5efef;
+    font-weight: bold;
+}
+
+/* Hover effects for table rows */
+table tbody tr:hover {
+    background-color: #f0f8ff;
+}
+
+/* Modal styling */
+.modal {
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-dialog {
+    margin: auto;
+    max-width: 500px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.modal-content {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    background-color: #6e7e96;
+    color: white;
+    border-bottom: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+.modal-body label {
+    font-weight: 500;
+}
+
+.modal-footer button {
+    min-width: 100px;
+}
+
+/* Error message */
+.text-danger {
+    font-size: 0.875rem;
+}
+
+/* Buttons */
+.btn {
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}

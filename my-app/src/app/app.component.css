@@ -1,22 +1,28 @@
+/* Nav link hover effect */
 a.nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
+    background-color: rgb(34 48 84);
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Active nav link */
 a.nav-link.active {
     background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
+    border-radius: 6px;
     font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Highlight active dropdown item */
 .dropdown-item.active {
     background-color: #605994;
     /* same as navbar color */
-    color: rgb(225, 138, 138);
+    color: #e18a8a;
+    /* soft pink */
     font-weight: bold;
 }
 
+/* Dropdown toggle button styling */
 #dropdownMenuButton {
     font-weight: 600;
 }
@@ -25,4 +31,5 @@ a.nav-link.active {
 .dropdown-item:hover {
     background-color: #7871b8;
     color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }

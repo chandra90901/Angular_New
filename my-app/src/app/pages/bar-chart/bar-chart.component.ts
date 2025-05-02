@@ -11,7 +11,7 @@ import { BaseChartDirective } from 'ng2-charts';
 })
 export class BarChartComponent {
   title = 'ng2-charts-demo';
-
+  isWarning = false;
   public barChartLegend = true;
   public barChartPlugins = [];
 

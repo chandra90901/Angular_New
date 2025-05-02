@@ -1,0 +1,22 @@
+.container {
+    max-width: 800px;
+}
+
+.card {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgb(204, 178, 228);
+}
+
+.btn {
+    min-width: 120px;
+}
+
+input.form-control {
+    border-radius: 6px;
+}

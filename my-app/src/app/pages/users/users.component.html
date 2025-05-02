@@ -1,0 +1,66 @@
+<div class="container mt-4">
+    <h3 class="text-center">User Management</h3>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th> <button class="btn " appHoverHighlight=" #346a9f" (click)="openForm()">Add User</button></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.password }}</td>
+                <td>
+                    <button class="btn btn-sm me-2" appHoverHighlight="lightblue" (click)="onEdit(user)"><i
+                            class="bi bi-pencil-fill"></i></button>
+                    <button class="btn btn-sm " appHoverHighlight="Red" (click)="onDelete(user.id)"><i
+                            class="bi bi-trash-fill"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal" [ngStyle]="{ display: showFormPopup ? 'block' : 'none' }">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ isEditMode ? 'Edit User' : 'Add User' }}</h5>
+                    <button type="button" class="btn-close" (click)="closeForm()"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-2">
+                        <label>Username</label>
+                        <input formControlName="username" class="form-control">
+                    </div>
+                    <div class="mb-2">
+                        <label>Email</label>
+                        <input formControlName="email" type="email" class="form-control">
+                    </div>
+                    <div class="mb-2">
+                        <label>Password</label>
+                        <input formControlName="password" type="password" class="form-control">
+                    </div>
+                    <div class="mb-2">
+                        <label>Confirm Password</label>
+                        <input formControlName="confirmPassword" type="password" class="form-control">
+                    </div>
+                    <div *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" [disabled]="signupForm.invalid">
+                        {{ isEditMode ? 'Update' : 'Add' }}
+                    </button>
+                    <button type="button" class="btn btn-secondary" (click)="closeForm()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

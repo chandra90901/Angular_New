@@ -11,7 +11,7 @@ import { DataBindingComponent } from '../data-binding/data-binding.component';
   styleUrls: ['./pie-chart.component.css']
 })
 export class PieChartComponent {
-  title = 'ng2-charts-demo';
+  title = 'Pie Chart';
 
   // Pie
   public pieChartOptions: ChartOptions<'pie'> = {
@@ -24,5 +24,4 @@ export class PieChartComponent {
   public pieChartLegend = true;
   public pieChartPlugins = [];
   constructor() { }
-
 }
