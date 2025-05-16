@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { DataBindingComponent } from '../data-binding/data-binding.component';
 import { PieChartComponent } from '../pie-chart/pie-chart.component';
 import { BarChartComponent } from '../bar-chart/bar-chart.component';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-dashboard',
   imports: [FormsModule, CommonModule, DataBindingComponent, PieChartComponent, BarChartComponent],
@@ -24,10 +24,12 @@ export class DashboardComponent implements OnInit {
   employeeList: any[] = [];
   constructor(
     private authService: LoginService,
-    private employeeService: DemoService
+    private employeeService: DemoService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
+    // throw new Error('Manual error test');
     this.authStatus$ = this.authService.authStatus$;
     this.checkLoginStatus();
     this.loadEmployees();
@@ -51,7 +53,7 @@ export class DashboardComponent implements OnInit {
     this.employeeService.getAllDemos()
       .pipe(
         catchError(error => {
-          console.error('Error fetching employees:', error);
+          this.toastr.error('Error fetching employees:', 'error');
           return ([]);
         })
       )

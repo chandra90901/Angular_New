@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { LoginService } from '../../Services/login.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -18,7 +18,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.loginForm = this.fb.group({
       identifier: ['', Validators.required],
@@ -31,8 +32,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.loginService.login(this.loginForm.value).subscribe({
         next: (x) => {
-          console.log('Login Success:', x);
-          alert("login Success ");
+          this.toastr.success('Login Success:', 'Success');
           localStorage.setItem('isLoggedIn', 'true');
           localStorage.setItem('token', x.token);
           this.router.navigate(['/dashboard']);
@@ -47,7 +47,7 @@ export class LoginComponent {
         }
       });
     } else {
-      this.errorMessage = 'Please fill out all required fields.';
+      this.toastr.warning('Please fill login all required fields.');
     }
   }
 

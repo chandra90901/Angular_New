@@ -3,9 +3,9 @@ import { FormControl, ReactiveFormsModule, FormGroup, Validators, FormBuilder } 
 import { DemoService } from '../../Services/demo.service';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
-import { HoverHighlightDirective } from '../../hover-highlight.directive';
+import { HoverHighlightDirective } from '../customdirectives/hover-highlight.directive';
 import { ActivatedRoute } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 declare var bootstrap: any;
 
 @Component({
@@ -27,7 +27,7 @@ export class DemoComponent implements OnInit, OnDestroy, AfterViewInit {
   genderLabel = "Enter your Gender";
   modalInstance: any;
 
-  constructor(private fb: FormBuilder, private demoService: DemoService, private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private demoService: DemoService, private route: ActivatedRoute, private toastr: ToastrService) {
     this.myForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -52,7 +52,7 @@ export class DemoComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.myForm.valid) {
       if (this.selectedId === null) {
         this.demoService.addDemo(this.myForm.value).subscribe(response => {
-          console.log('Saved successfully!', response);
+          this.toastr.success('Saved successfully!', 'Success');
           this.myForm.reset();
           this.loadDemos();
         }, error => {

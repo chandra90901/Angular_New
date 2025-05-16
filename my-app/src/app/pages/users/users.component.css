@@ -2,11 +2,11 @@
 table {
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(55, 42, 42, 0.05);
 }
 
 table thead {
-    background-color: #784e4e;
+    background-color: #e7e0e0;
 }
 
 table th,
@@ -17,13 +17,13 @@ table td {
 
 table th button.btn {
     /* background-color: #346a9f; */
-    color: #f5efef;
+    color: #e4bcbc;
     font-weight: bold;
 }
 
 /* Hover effects for table rows */
 table tbody tr:hover {
-    background-color: #f0f8ff;
+    background-color: #1e8dee;
 }
 
 /* Modal styling */

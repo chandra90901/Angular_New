@@ -15,7 +15,8 @@
                 <td>{{ i + 1 }}</td>
                 <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.password }}</td>
+                <td>{{ '•'.repeat(user.password.length) }}</td>
+
                 <td>
                     <button class="btn btn-sm me-2" appHoverHighlight="lightblue" (click)="onEdit(user)"><i
                             class="bi bi-pencil-fill"></i></button>
@@ -55,7 +56,7 @@
                     <div *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" [disabled]="signupForm.invalid">
+                    <button type="submit" class="btn btn-success">
                         {{ isEditMode ? 'Update' : 'Add' }}
                     </button>
                     <button type="button" class="btn btn-secondary" (click)="closeForm()">Cancel</button>

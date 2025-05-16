@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DemoService } from '../../Services/demo.service';
 import { CommonModule } from '@angular/common';
-import { HoverHighlightDirective } from '../../hover-highlight.directive';
+import { HoverHighlightDirective } from '../customdirectives/hover-highlight.directive';
 import { catchError, Subscription } from 'rxjs';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-employee',
   imports: [ReactiveFormsModule, CommonModule, HoverHighlightDirective],
@@ -17,7 +17,10 @@ export class EmployeeComponent implements OnInit, OnDestroy {
   isEditMode = false;
   editId: number | null = null;
   subscriptions: Subscription = new Subscription();
-  constructor(private fb: FormBuilder, private demoService: DemoService) {
+  constructor(private fb: FormBuilder,
+    private demoService: DemoService,
+    private toastr: ToastrService
+  ) {
     this.employeeForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -36,8 +39,8 @@ export class EmployeeComponent implements OnInit, OnDestroy {
     const sub = this.demoService.getAllDemos()
       .pipe(
         catchError(error => {
-          console.error('Error fetching employees:', error);
-          return ([]); // return empty array so app doesn't crash
+          this.toastr.error('Error fetching employees:', 'error');
+          return ([]);
         })
       )
       .subscribe((data: any) => {
@@ -58,20 +61,37 @@ export class EmployeeComponent implements OnInit, OnDestroy {
   //   }
   // }
   onSubmit() {
-    if (this.employeeForm.invalid) return;
-
+    if (this.employeeForm.invalid) {
+      this.toastr.warning('Please enter Employee required fields.', 'Warning');
+      return;
+    }
     if (this.isEditMode && this.editId !== null) {
-      this.demoService.updateDemo(this.editId, this.employeeForm.value).subscribe(() => {
-        this.getEmployees();
-        this.resetForm();
-      });
+      this.demoService.updateDemo(this.editId, this.employeeForm.value).subscribe(
+        () => {
+          this.toastr.success('Employee updated successfully!', 'Success');
+          this.getEmployees();
+          this.resetForm();
+        },
+        error => {
+          console.error('Update error:', error);
+          this.toastr.error('Failed to update employee.', 'Error');
+        }
+      );
     } else {
-      this.demoService.addDemo(this.employeeForm.value).subscribe(() => {
-        this.getEmployees();
-        this.resetForm();
-      });
+      this.demoService.addDemo(this.employeeForm.value).subscribe(
+        () => {
+          this.toastr.success('Employee added successfully!', 'Success');
+          this.getEmployees();
+          this.resetForm();
+        },
+        error => {
+          console.error('Add error:', error);
+          this.toastr.error('Failed to add employee.', 'Error');
+        }
+      );
     }
   }
+
 
   onEdit(emp: any) {
     this.employeeForm.patchValue(emp);
@@ -81,6 +101,7 @@ export class EmployeeComponent implements OnInit, OnDestroy {
 
   onDelete(id: number) {
     this.demoService.deleteDemo(id).subscribe(() => {
+      this.toastr.success('Employee delete successfully!', 'Success');
       this.getEmployees();
     });
   }

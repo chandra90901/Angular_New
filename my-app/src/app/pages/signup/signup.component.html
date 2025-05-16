@@ -18,7 +18,7 @@
         <label for="confirmPassword">Confirm Password</label>
         <input id="confirmPassword" formControlName="confirmPassword" type="password">
     </div>
-    <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+    <button type="submit">Sign Up</button>
     <div *ngIf="errorMessage" class="text-danger mt-2">
         {{ errorMessage }}
     </div>

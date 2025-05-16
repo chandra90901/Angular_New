@@ -1,22 +1,26 @@
 export const TREE_DATA = [
+
     {
-        name: 'Root Node 1',
+        name: 'Built-in directives',
         children: [
             {
-                name: 'Child Node 1-1',
+                name: 'Attribute directives',
                 children: [
-                    { name: 'Grandchild Node 1-1-1' },
-                    { name: 'Grandchild Node 1-1-2' }
+                    { name: 'NgClass' },
+                    { name: 'NgStyle' },
+                    { name: 'NgModel' }
                 ]
             },
-            { name: 'Child Node 1-2' }
+            { name: 'Components' }
         ]
     },
     {
-        name: 'Root Node 2',
+        name: 'Structural directives',
         children: [
-            { name: 'Child Node 2-1' },
-            { name: 'Child Node 2-2' }
+            { name: 'NgIf' },
+            { name: 'NgFor' },
+            { name: 'NgSwitch' }
         ]
     }
 ];
+

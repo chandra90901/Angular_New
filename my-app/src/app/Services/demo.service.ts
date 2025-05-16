@@ -11,16 +11,16 @@ export class DemoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  addDemo(demo: any) {
-    return this.httpClient.post(`${this.baseUrl}/form`, demo);
-  }
-
   getAllDemos() {
     return this.httpClient.get(`${this.baseUrl}/form`);
   }
   // async getAllDemosAsPromise(): Promise<any> {
   //   return await firstValueFrom(this.httpClient.get(`${this.baseUrl}/form`));
   // }
+
+  addDemo(demo: any) {
+    return this.httpClient.post(`${this.baseUrl}/form`, demo);
+  }
   updateDemo(id: number, demo: any) {
     return this.httpClient.put(`${this.baseUrl}/form/${id}`, demo);
   }

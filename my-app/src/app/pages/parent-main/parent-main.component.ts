@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-parent-main',
   imports: [FormsModule],
@@ -20,10 +20,10 @@ export class ParentMainComponent {
   btnTitle = 'Click to submit the form';
   Twobinding = '';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private toastr: ToastrService) { }
 
   eventBinding(): void {
-    alert('Chandra');
+    this.toastr.success('Chandra');
 
   }
   goToMain(): void {

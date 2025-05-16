@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { User } from '../../model/users';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../../Services/login.service';
-import { HoverHighlightDirective } from '../../hover-highlight.directive';
-
+import { HoverHighlightDirective } from '../customdirectives/hover-highlight.directive';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-users',
   imports: [ReactiveFormsModule, CommonModule, HoverHighlightDirective],
@@ -20,7 +20,9 @@ export class UsersComponent implements OnInit {
   errorMessage: string = '';
   showFormPopup = false;
 
-  constructor(private fb: FormBuilder, private loginService: LoginService) {
+  constructor(private fb: FormBuilder,
+    private loginService: LoginService,
+    private toastr: ToastrService) {
     this.signupForm = this.fb.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -68,31 +70,41 @@ export class UsersComponent implements OnInit {
   onSubmit(): void {
     if (this.signupForm.invalid) {
       this.errorMessage = 'Please fix the errors above.';
+      this.toastr.error(this.errorMessage, 'Validation Error');
+      this.toastr.warning('Please enter User required fields.', 'Warning');
       return;
     }
+
     const { username, email, password } = this.signupForm.value;
     const newUser = { username, email, password };
 
     if (this.isEditMode && this.editingUserId !== null) {
-      console.log('Editing user ID:', this.editingUserId);
       this.loginService.updateSignup(this.editingUserId, newUser).subscribe({
         next: () => {
           this.loadUsers();
+          this.toastr.success('User updated successfully!', 'Success');
           this.closeForm();
         },
-        error: err => this.errorMessage = 'Update failed!'
+        error: err => {
+          this.errorMessage = 'Update failed!';
+          this.toastr.error(this.errorMessage, 'Error');
+        }
       });
-    }
-    else {
+    } else {
       this.loginService.addSignup(newUser).subscribe({
         next: () => {
           this.loadUsers();
+          this.toastr.success('User added successfully!', 'Success');
           this.closeForm();
         },
-        error: err => this.errorMessage = 'Add failed!'
+        error: err => {
+          this.errorMessage = 'Add failed!';
+          this.toastr.error(this.errorMessage, 'Error');
+        }
       });
     }
   }
+
   onDelete(id: number): void {
     if (!id) {
       console.error('Invalid ID passed to onDelete:', id);
@@ -100,10 +112,17 @@ export class UsersComponent implements OnInit {
     }
 
     this.loginService.deleteSignup(id).subscribe({
-      next: () => this.loadUsers(),
-      error: err => console.error('Error deleting user:', err)
+      next: () => {
+        this.loadUsers();
+        this.toastr.info('User deleted.', 'Deleted');
+      },
+      error: err => {
+        console.error('Error deleting user:', err);
+        this.toastr.error('Delete failed.', 'Error');
+      }
     });
   }
+
 
   onEdit(user: User): void {
     this.openForm(user);
