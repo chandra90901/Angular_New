@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import { DataBindingComponent } from '../data-binding/data-binding.component';
 
 @Component({
   selector: 'app-pie-chart',

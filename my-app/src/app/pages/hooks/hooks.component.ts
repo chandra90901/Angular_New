@@ -1,11 +1,18 @@
-import { Component, Input } from '@angular/core';
-import { OnInit, OnChanges, DoCheck, AfterViewInit, OnDestroy, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  OnChanges,
+  DoCheck,
+  AfterViewInit,
+  OnDestroy,
+  SimpleChanges
+} from '@angular/core';
 
 @Component({
   selector: 'app-hooks',
-  imports: [],
   templateUrl: './hooks.component.html',
-  styleUrl: './hooks.component.css'
+  styleUrls: ['./hooks.component.css']
 })
 export class HooksComponent implements OnInit, OnChanges, DoCheck, AfterViewInit, OnDestroy {
 
@@ -13,29 +20,30 @@ export class HooksComponent implements OnInit, OnChanges, DoCheck, AfterViewInit
   message: string = '';
 
   constructor() {
-    console.log('Constructor called!');
+    console.log('%cConstructor', 'color: blue');
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('ngOnChanges called!', changes);
-    this.message = 'ngOnChanges called!';
+    console.log('%cngOnChanges', 'color: orange', changes);
+    if (changes['myData']) {
+      this.message = `Input changed to: ${changes['myData'].currentValue}`;
+    }
   }
 
   ngOnInit(): void {
-    console.log('ngOnInit called!');
-    this.message = 'ngOnInit called!';
+    console.log('%cngOnInit', 'color: green');
   }
 
   ngDoCheck(): void {
-    console.log('ngDoCheck called!');
+    console.log('%cngDoCheck - custom change detection logic', 'color: purple');
   }
 
   ngAfterViewInit(): void {
-    console.log('ngAfterViewInit called!');
+    console.log('%cngAfterViewInit - view initialized', 'color: teal');
   }
 
   ngOnDestroy(): void {
-    console.log('ngOnDestroy called!');
-    alert('HooksComponent is being destroyed!');
+    console.log('%cngOnDestroy - cleaning up', 'color: red');
+    alert('HooksComponent destroyed!');
   }
 }

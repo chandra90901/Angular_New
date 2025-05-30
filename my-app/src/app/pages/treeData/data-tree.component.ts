@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TreeViewComponent } from '../tree-view/tree-view.component';
 @Component({
-  selector: 'app-data-binding',
+  selector: 'app-data-tree',
   imports: [FormsModule, TreeViewComponent,],
-  templateUrl: './data-binding.component.html',
-  styleUrl: './data-binding.component.css'
+  templateUrl: './data-tree.component.html',
+  styleUrl: './data-tree.component.css'
 })
-export class DataBindingComponent {
+export class DataTreeComponent {
 
 
   // parentData = "Tree View"

@@ -5,13 +5,13 @@ import { Observable, catchError, of } from 'rxjs';
 import { Demo } from '../../model/demo';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { DataBindingComponent } from '../data-binding/data-binding.component';
 import { PieChartComponent } from '../pie-chart/pie-chart.component';
 import { BarChartComponent } from '../bar-chart/bar-chart.component';
 import { ToastrService } from 'ngx-toastr';
+import { DataTreeComponent } from '../treeData/data-tree.component';
 @Component({
   selector: 'app-dashboard',
-  imports: [FormsModule, CommonModule, DataBindingComponent, PieChartComponent, BarChartComponent],
+  imports: [FormsModule, CommonModule, DataTreeComponent, PieChartComponent, BarChartComponent],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })

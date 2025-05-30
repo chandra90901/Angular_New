@@ -1,0 +1,22 @@
+<div class="container mt-4">
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            <h4 class="mb-0">{{ username }}</h4>
+        </div>
+        <div class="card-body">
+            <p [style.color]="isWarning ? 'orange' : 'green'" class="fw-bold">
+                This is a property binding.
+            </p>
+
+            <div class="mb-3">
+                <button class="btn btn-info me-2" [disabled]="isDisabled" [title]="btnTitle">Click me</button>
+
+                <button class=" btn btn-success" (click)="eventBinding()">Submit</button>
+            </div>
+            <div class="mb-3">
+                <input [(ngModel)]="Twobinding" type="text" class="form-control" placeholder="Enter text">
+                <p class="mt-2">Two way Binding:{{ Twobinding }}</p>
+            </div>
+        </div>
+    </div>
+</div>
